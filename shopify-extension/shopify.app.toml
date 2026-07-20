@@ -1,0 +1,32 @@
+# Shopify app configuration — Shopify CLI v3
+# Replace client_id with the one from your Partner Dashboard app.
+# Run: shopify app dev --store your-store.myshopify.com
+#
+# DO NOT commit real client_id/secret to a public repo.
+# The client_id below is a placeholder — replace it after creating
+# your app in https://partners.shopify.com
+
+name = "Kerala Ayurveda PDP"
+client_id = "REPLACE_WITH_YOUR_CLIENT_ID"
+application_url = "https://shopify.dev/apps/default-app-home"
+embedded = false
+
+[access_scopes]
+# Theme App Extensions only need read_themes for dev; no extra scopes needed
+# for a pure TAE (no Admin API calls from the app itself).
+scopes = ""
+
+[auth]
+redirect_urls = [
+  "https://shopify.dev/apps/default-app-home/api/auth"
+]
+
+[webhooks]
+api_version = "2024-10"
+
+[pos]
+embedded = false
+
+[build]
+include_config_on_deploy = true
+automatically_update_urls_on_dev = true

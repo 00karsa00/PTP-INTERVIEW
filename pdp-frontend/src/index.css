@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ka-cream text-ka-bark antialiased;
+  }
+
+  /* Focus ring — visible for keyboard users, invisible for mouse */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ka-green-500 ring-offset-2 ring-offset-ka-cream;
+  }
+
+  /* Respect user motion preference globally */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Shimmer skeleton loader */
+  .skeleton {
+    @apply rounded-md;
+    background: linear-gradient(
+      90deg,
+      theme('colors.stone.200') 25%,
+      theme('colors.stone.100') 50%,
+      theme('colors.stone.200') 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.8s linear infinite;
+  }
+
+  /* Subtle text balance for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+}

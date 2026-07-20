@@ -1,0 +1,14 @@
+{
+  "blocks": {
+    "ka_routine_quiz": {
+      "name": "KA Routine Quiz",
+      "settings": {
+        "heading":        { "label": "Heading" },
+        "subheading":     { "label": "Subheading" },
+        "api_endpoint":   { "label": "Recommendation API endpoint", "info": "Full URL of your /api/v1/recommendation POST endpoint." },
+        "quiz_config_ref":{ "label": "Quiz question set", "info": "Select a quiz_config metaobject entry to customise question text and options." },
+        "show_disclaimer":{ "label": "Show FDA disclaimer" }
+      }
+    }
+  }
+}

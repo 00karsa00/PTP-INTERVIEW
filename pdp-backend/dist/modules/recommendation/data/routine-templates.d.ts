@@ -1,0 +1,10 @@
+import { Goal, Frequency } from '../dto/recommend-request.dto';
+import { PackRecommendation, RoutineStep } from '../dto/recommend-response.dto';
+export declare const PACKS: Record<Frequency, PackRecommendation>;
+type RoutineMap = Record<Goal, Record<Frequency, RoutineStep[]>>;
+export declare const ROUTINES: RoutineMap;
+export declare const BLURB_FALLBACKS: Record<Goal, string>;
+export declare const GOAL_LABELS: Record<Goal, string>;
+export declare const FREQUENCY_LABELS: Record<Frequency, string>;
+export declare const DISCLAIMER = "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Consult a qualified healthcare professional before use, especially if you are pregnant, nursing, taking any medication, or have a medical condition.";
+export {};

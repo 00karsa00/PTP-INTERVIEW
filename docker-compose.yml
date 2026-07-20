@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  # ── PostgreSQL Primary (write) ─────────────────────────────────────────
+  postgres-primary:
+    image: postgres:15-alpine
+    container_name: hrms_postgres_primary
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: hrms_poc
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_primary_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - hrms_network
+
+  # ── PostgreSQL Replica (read) ──────────────────────────────────────────
+  # POC: uses same instance on different port to simulate read replica
+  postgres-replica:
+    image: postgres:15-alpine
+    container_name: hrms_postgres_replica
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: hrms_poc
+    ports:
+      - '5433:5432'
+    volumes:
+      - postgres_replica_data:/var/lib/postgresql/data
+    networks:
+      - hrms_network
+
+  # ── RabbitMQ ───────────────────────────────────────────────────────────
+  rabbitmq:
+    image: rabbitmq:3.12-management-alpine
+    container_name: hrms_rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - '5672:5672'   # AMQP
+      - '15672:15672' # Management UI → http://localhost:15672
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ['CMD', 'rabbitmq-diagnostics', 'ping']
+      interval: 15s
+      timeout: 10s
+      retries: 5
+    networks:
+      - hrms_network
+
+volumes:
+  postgres_primary_data:
+  postgres_replica_data:
+  rabbitmq_data:
+
+networks:
+  hrms_network:
+    driver: bridge

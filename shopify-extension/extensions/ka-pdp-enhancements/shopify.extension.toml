@@ -1,0 +1,8 @@
+# Theme App Extension manifest — Shopify CLI v3
+api_version = "2024-10"
+uid = "147c16ba-34f4-45ad-cc82-f30fa5464d49da8d34a4"
+
+[[extensions]]
+name   = "Kerala Ayurveda PDP Enhancements"
+handle = "ka-pdp-enhancements"
+type   = "theme"
