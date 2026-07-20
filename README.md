@@ -37,7 +37,7 @@ PTP/
 
 ## Projects at a glance
 
-| | HRMS POC | Kerala Ayurveda PDP |
+| Kerala Ayurveda PDP |
 |---|---|---|
 | **Purpose** | Enterprise leave management with scalable job processing | Shopify PDP enhancement — quiz, recommendation, wishlist, marketplace |
 | **Backend port** | 3000 | 3001 |
@@ -60,26 +60,6 @@ Install once, works for both projects.
 | npm | 10 | `npm -v` |
 | Docker + Docker Compose | 24 / v2 | `docker -v` |
 | (Optional) Shopify CLI | 3 | `shopify version` |
-
----
-
-## 2. HRMS POC — Quick start
-
-### 2.1 Start infrastructure
-
-```bash
-# From repo root
-docker compose up -d
-```
-
-Starts:
-- PostgreSQL **primary** → `localhost:5432`
-- PostgreSQL **replica** → `localhost:5433` (separate instance, simulates replica)
-- RabbitMQ → `localhost:5672` (AMQP) · `localhost:15672` (Management UI)
-  - Default credentials: `guest` / `guest`
-
-Wait ~15 s for all health checks to pass before starting the backend.
-
 
 ## 3. Kerala Ayurveda PDP — Quick start
 
